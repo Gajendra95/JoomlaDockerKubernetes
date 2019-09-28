@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joomlamysql
+  labels:
+    app: joomlamysql
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joomlamysql
+  template:
+    metadata:
+      labels:
+        app: joomlamysql
+    spec:
+      containers:
+        - image: sreedocker123/joomlamysql:latest
+          name: mysqlnew
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: example
+          ports:
+            - containerPort: 3306
+              name: joomlamysql

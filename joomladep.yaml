@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: joomla
+  labels:
+    app: joomla
+
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: joomla
+  template:
+    metadata:
+      labels:
+        app: joomla
+    spec:
+      containers:
+        - image: sreedocker123/joomla:latest
+          name: joomla
+          env:
+          - name: JOOMLA_DB_HOST
+            value: joomlamysql:3306
+          - name: JOOMLA_DB_PASSWORD
+            value: example
